@@ -57,7 +57,11 @@ public class CharacterStatDefineService {
         }
 
         if(option == 2){ // HP
-            return value*876;
+            value = value*876;
+            if(value < 50000){
+                return value * 2;
+            }
+            return value;
         }
         return value+300;
     }
