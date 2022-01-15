@@ -19,9 +19,9 @@ class CharacterStatDefineTests {
     @Test
     void characterStatDefineTest(){
         log.info("####PLAYER 1 STAT###");
-        characterStatDefineService.defineRandomStat("테스터1");
+        characterStatDefineService.defineRandomStat("마리");
         log.info("####PLAYER 2 STAT###");
-        characterStatDefineService.defineRandomStat("테스터2");
+        characterStatDefineService.defineRandomStat("와이비");
 
     }
 
