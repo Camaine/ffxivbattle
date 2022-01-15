@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class CharacterStatDefineService {
 
@@ -43,11 +45,13 @@ public class CharacterStatDefineService {
         characterStat.setDetermination(adjustStatValue(encryptedValue.charAt(2),0));
         characterStat.setDefense(adjustStatValue(encryptedValue.charAt(3),1));
         characterStat.setHp(adjustStatValue(encryptedValue.charAt(4),2));
+        characterStat.setJob(defineRandomJob(encryptedValue.charAt(5)));
         log.info("Critical : "+ characterStat.getCritical());
         log.info("Directhit : "+ characterStat.getDirecthit());
         log.info("Determination : "+ characterStat.getDetermination());
         log.info("Defense : "+ characterStat.getDefense());
         log.info("HP : "+ characterStat.getHp());
+        log.info("JOB : "+ characterStat.getJob());
         return characterStat;
     }
 
@@ -64,5 +68,22 @@ public class CharacterStatDefineService {
             return value;
         }
         return value+300;
+    }
+
+    public String defineRandomJob(int value){
+        value = value%4;
+        if(value == 0){
+            return "DRG";
+        }
+
+        if(value == 1){
+            return "SAM";
+        }
+
+        if(value == 2){
+            return "BRD";
+        }
+
+        return "BLM";
     }
 }
