@@ -46,6 +46,7 @@ public class CharacterStatDefineService {
         characterStat.setDefense(adjustStatValue(encryptedValue.charAt(3),1));
         characterStat.setHp(adjustStatValue(encryptedValue.charAt(4),2));
         characterStat.setJob(defineRandomJob(encryptedValue.charAt(5)));
+        log.info("Nickname : " + characterStat.getNickname());
         log.info("Critical : "+ characterStat.getCritical());
         log.info("Directhit : "+ characterStat.getDirecthit());
         log.info("Determination : "+ characterStat.getDetermination());
