@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "TB_CHARACTER_INFO")
-public class characterStat {
+public class CharacterStat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
