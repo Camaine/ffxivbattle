@@ -40,9 +40,9 @@ public class CharacterStatDefineService {
 
     public CharacterStat setCharacterStat(CharacterStat characterStat, String encryptedValue, String nickname){
         characterStat.setNickname(nickname);
-        characterStat.setCritical(adjustStatValue(encryptedValue.charAt(0),0));
-        characterStat.setDirecthit(adjustStatValue(encryptedValue.charAt(1),0));
-        characterStat.setDetermination(adjustStatValue(encryptedValue.charAt(2),0));
+        characterStat.setCritical(adjustStatValue(encryptedValue.charAt(0),3));
+        characterStat.setDirecthit(adjustStatValue(encryptedValue.charAt(1),4));
+        characterStat.setDetermination(adjustStatValue(encryptedValue.charAt(2),5));
         characterStat.setDefense(adjustStatValue(encryptedValue.charAt(3),1));
         characterStat.setHp(adjustStatValue(encryptedValue.charAt(4),2));
         characterStat.setJob(defineRandomJob(encryptedValue.charAt(5)));
@@ -58,7 +58,7 @@ public class CharacterStatDefineService {
 
     public int adjustStatValue(int value, int option){
         if(option == 1){ // Defense
-            return value/2;
+            return value*2;
         }
 
         if(option == 2){ // HP
@@ -68,7 +68,19 @@ public class CharacterStatDefineService {
             }
             return value;
         }
-        return value+300;
+
+        if(option == 3){ // Crit
+            return value*31;
+        }
+
+        if(option == 4){ // DH
+            return value*26;
+        }
+
+        if(option == 5){ // DET
+            return value*21;
+        }
+        return value;
     }
 
     public String defineRandomJob(int value){
