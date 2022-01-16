@@ -46,11 +46,13 @@ public class CharacterStatDefineService {
         characterStat.setDefense(adjustStatValue(encryptedValue.charAt(3),1));
         characterStat.setHp(adjustStatValue(encryptedValue.charAt(4),2));
         characterStat.setJob(defineRandomJob(encryptedValue.charAt(5)));
+        characterStat.setAttack(adjustStatValue(encryptedValue.charAt(6),6));
         log.info("Nickname : " + characterStat.getNickname());
         log.info("Critical : "+ characterStat.getCritical());
         log.info("Directhit : "+ characterStat.getDirecthit());
         log.info("Determination : "+ characterStat.getDetermination());
         log.info("Defense : "+ characterStat.getDefense());
+        log.info("Attack : "+ characterStat.getAttack());
         log.info("HP : "+ characterStat.getHp());
         log.info("JOB : "+ characterStat.getJob());
         return characterStat;
@@ -58,7 +60,7 @@ public class CharacterStatDefineService {
 
     public int adjustStatValue(int value, int option){
         if(option == 1){ // Defense
-            return value*2;
+            return value*46;
         }
 
         if(option == 2){ // HP
@@ -79,6 +81,10 @@ public class CharacterStatDefineService {
 
         if(option == 5){ // DET
             return value*21;
+        }
+
+        if(option == 6){ // ATTACK
+            return value*51;
         }
         return value;
     }
