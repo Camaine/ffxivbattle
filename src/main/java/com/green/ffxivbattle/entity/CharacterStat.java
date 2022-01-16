@@ -27,6 +27,9 @@ public class CharacterStat {
     @Column(name = "hp")
     private int hp;
 
+    @Column(name = "attack")
+    private int attack;
+
     @Column(name = "critical")
     private int critical;
 
