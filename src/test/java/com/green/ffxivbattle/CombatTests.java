@@ -39,6 +39,10 @@ class CombatTests {
         CharacterStat characterStat1 = new CharacterStat();
         CharacterStat characterStat2 = new CharacterStat();
 
+        Combat combat = new Combat();
+
+        int damage = 0;
+
         String encryptedValue1 = "";
         String encryptedValue2 = "";
 
@@ -52,16 +56,17 @@ class CombatTests {
         }
 
         while(true){
-
-
-            characterStat1.setHp(characterStat1.getHp()-characterStat2.getAttack());
-            log.info("##"+player2+"이(가) "+player1+"에 데미지 "+characterStat2.getAttack()+"/ "+player1+" HP :"+characterStat1.getHp());
+            damage = combat.autoAttackDamage(characterStat2.getAttack());
+            characterStat1.setHp(characterStat1.getHp()-damage);
+            log.info("##"+player2+"이(가) "+player1+"에 데미지 "+damage+"/ "+player1+" HP :"+characterStat1.getHp());
             if(characterStat1.getHp() <= 0 || characterStat2.getHp() <= 0){
                 log.info("##"+player2+" 승리##");
                 break;
             }
-            characterStat2.setHp(characterStat2.getHp()-characterStat1.getAttack());
-            log.info("##"+player1+"이(가) "+player2+"에 데미지 "+characterStat1.getAttack()+"/ "+player2+" HP :"+characterStat2.getHp());
+
+            damage = combat.autoAttackDamage(characterStat1.getAttack());
+            characterStat2.setHp(characterStat2.getHp()-damage);
+            log.info("##"+player1+"이(가) "+player2+"에 데미지 "+damage+"/ "+player2+" HP :"+characterStat2.getHp());
             if(characterStat1.getHp() <= 0 || characterStat2.getHp() <= 0){
                 log.info("##"+player1+" 승리##");
                 break;

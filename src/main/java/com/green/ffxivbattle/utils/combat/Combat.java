@@ -1,5 +1,7 @@
 package com.green.ffxivbattle.utils.combat;
 
+import java.util.Random;
+
 public class Combat {
 
     public float critChance(int critical){
@@ -20,6 +22,8 @@ public class Combat {
     }
 
     public int autoAttackDamage(int attack){
-        return attack;
+        Random random = new Random();
+        float crit = random.nextFloat();
+        return (int) (attack * crit / 10 + attack);
     }
 }
